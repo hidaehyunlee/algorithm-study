@@ -8,7 +8,7 @@ def solution(n):
 
     print(count)
 
-n = input(int())
+n = int(input())
 solution(n)
  
     
