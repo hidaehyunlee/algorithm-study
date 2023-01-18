@@ -16,37 +16,61 @@ Connected Component?
 # 재귀 허용치 넘어가면 런타임에러 아래로 해결
 # -> sys.setrecursionlimit(10000)
 
-
+# 2번째 풀이
 import sys
 sys.setrecursionlimit(10000)
 
+n, m = map(int, input().split())
+# 그래프 정점만 저장 -> append 
+g = [[] * (n + 1) for _ in range(n + 1)]
+for _ in range(m):
+    a, b = map(int, input().split())
+    g[a].append(b)
+    g[b].append(a)
+
+#print(g) # [[], [2, 5], [1, 5], [4], [3, 6], [2, 1], [4]]
+visited = [False] * (n + 1)
+cnt = 0
 def dfs(v):
     visited[v] = True
+
     for i in g[v]:
         if not visited[i]:
             dfs(i)
 
-n, m = map(int, sys.stdin.readline().split())
-cnt = 0
-visited = [False] * (n + 1)
-g = [[] for _ in range(n + 1)]
-for _ in range(m):
-    a, b = map(int, sys.stdin.readline().split())
-    g[a].append(b)
-    g[b].append(a)
-
-# g = [[False] * (n + 1) for _ in range(n + 1)]
-# for _ in range(n + 1):
-#     a, b = map(int, input().split())
-#     g[a][b] = g[b][a] = True
-
-for i in range(1, n + 1):
+for i in range(n + 1):
     if not visited[i]:
-        # if not g[i]: # 노드 하나인 예외경우
-        #     cnt += 1
-        #     visited[i] = True
-        # else: # 해당 정점과 연결된 그래프 존재
-            dfs(i)
-            cnt += 1
+        dfs(i)
+        cnt += 1
 
-print(cnt)
+print(cnt - 1)
+
+
+# import sys
+# sys.setrecursionlimit(10000)
+
+# def dfs(v):
+#     visited[v] = True
+#     for i in g[v]:
+#         if not visited[i]:
+#             dfs(i)
+
+# n, m = map(int, sys.stdin.readline().split())
+# cnt = 0
+# visited = [False] * (n + 1)
+# g = [[] for _ in range(n + 1)]
+# for _ in range(m):
+#     a, b = map(int, sys.stdin.readline().split())
+#     g[a].append(b)
+#     g[b].append(a)
+
+# for i in range(1, n + 1):
+#     if not visited[i]:
+#         # if not g[i]: # 노드 하나인 예외경우
+#         #     cnt += 1
+#         #     visited[i] = True
+#         # else: # 해당 정점과 연결된 그래프 존재
+#             dfs(i)
+#             cnt += 1
+
+# print(cnt)
