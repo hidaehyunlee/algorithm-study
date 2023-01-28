@@ -5,37 +5,66 @@
 # 아이디어: 시간을 최소화하는 0초로 이동하는 연산이 가장 우선 체크되어야 한다.
 #           -> q.popleft로 체크하므로, q.appendleft 연산으로 우선순위 줄 수 있음
 
+# 세번째 제출
+# 놓친 부분: q = deque(); q.append(n 혹은 [n]) 과 q = deque([n]) 은 다르다
+# - nx 가 -1인 곳만 방문하도록 하기  
 from collections import deque
-import sys
 
-n, k = map(int, sys.stdin.readline().split())
+n, k = map(int, input().split())
+visited = [-1] * 100001
 
-def bfs():
-    graph = [-1] * 100001
-    graph[n] = 0
-    queue = deque([n])
+q = deque([n])
+visited[n] = 0
 
-    while queue:
-        x = queue.popleft()
+while q:
+    x = q.popleft()
 
-        # 동생의 위치에 도달했다면 리턴
-        if x == k:
-            print(graph[x])
-            return
+    if x == k:
+        print(visited[x])
+        break
 
-        # 반복문을 통해 3가지 이동의 경우를 확인
-        for nx in (x + 1, x - 1, x * 2):
-            # next x가 범위 내에 있고 and 이동하지 않았다면 이동
-            if 0 <= nx <= 100000 and graph[nx] == -1:
-                # 순간이동이라면
-                if nx == x * 2:
-                    graph[nx] = graph[x] # 0초 갱신
-                    queue.appendleft(nx) # 순간이동이기에 먼저 탐색
-                else:
-                    graph[nx] = graph[x] + 1
-                    queue.append(nx)
+    for nx in (x + 1, x - 1, x * 2):
+        if 0 <= nx <= 100000 and visited[nx] == -1:
+            if nx == x * 2:
+                q.appendleft(nx)
+                visited[nx] = visited[x]
+            else:
+                q.append(nx)
+                visited[nx] = visited[x] + 1
 
-bfs()
+
+# 두번째 제출
+# from collections import deque
+# import sys
+
+# n, k = map(int, sys.stdin.readline().split())
+
+# def bfs():
+#     graph = [-1] * 100001
+#     graph[n] = 0
+#     queue = deque([n])
+
+#     while queue:
+#         x = queue.popleft()
+
+#         # 동생의 위치에 도달했다면 리턴
+#         if x == k:
+#             print(graph[x])
+#             return
+
+#         # 반복문을 통해 3가지 이동의 경우를 확인
+#         for nx in (x + 1, x - 1, x * 2):
+#             # next x가 범위 내에 있고 and 이동하지 않았다면 이동
+#             if 0 <= nx <= 100000 and graph[nx] == -1:
+#                 # 순간이동이라면
+#                 if nx == x * 2:
+#                     graph[nx] = graph[x] # 0초 갱신
+#                     queue.appendleft(nx) # 순간이동이기에 먼저 탐색
+#                 else:
+#                     graph[nx] = graph[x] + 1
+#                     queue.append(nx)
+
+# bfs()
 
 # 첫번째 제출:  if graph[2 * x] == 0 and (2 * x) <= max_len: IndexError: list index out of range
 # n, k = map(int, input().split())
