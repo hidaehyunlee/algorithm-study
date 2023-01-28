@@ -1,5 +1,6 @@
 # 예산 https://www.acmicpc.net/problem/2512
 
+# 다시 풀기
 n = int(input())
 arr = sorted(list(map(int, input().split())))
 total = int(input())
