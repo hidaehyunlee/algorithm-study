@@ -1,33 +1,3 @@
-- [1. 그리디 Greedy](#1-----greedy)
-- [2. 구현 Implemetaion](#2----implemetaion)
-- [3. 자료구조 Data Structure](#3------data-structure)
-  * [3.1. Stack](#31-stack)
-  * [3.2. Queue](#32-queue)
-  * [3.3. 재귀 Recursion](#33----recursion)
-  * [3.4. 그래프](#34----)
-- [4. 탐색 DFS/BFS](#4----dfs-bfs)
-  * [4.0. 그래프 표현 방식](#40----------)
-  * [4.1. DFS](#41-dfs)
-  * [4.2. BFS](#42-bfs)
-- [5. 정렬](#5---)
-  * [5.1. 선택정렬](#51-----)
-  * [5.2. 삽입정렬](#52-----)
-  * [5.3. 퀵정렬](#53----)
-      - [호어 분할(Hoare Partition) 방식](#------hoare-partition----)
-      - [List Comprehension: 리스트 안에서 for문, if문 사용](#list-comprehension----------for---if----)
-  * [5.4. 계수 정렬 count sort](#54-------count-sort)
-  * [5.5. sorted 와 sort](#55-sorted---sort)
-- [6. 이진탐색 Binary Search](#6------binary-search)
-  * [6.1. 문제 모음](#61------)
-- [7. DP](#7-dp)
-- [8. 최단경로](#8-----)
-  * [8.1. 다익스트라(Dijkstra) 최단 경로](#81-------dijkstra-------)
-    + [1) 간단한 다익스트라 알고리즘](#1----------------)
-    + [2) 개선된 다익스트라 알고리즘](#2----------------)
-  * [8.2. 플로이드 워셜 알고리즘](#82-------------)
-
-
-<br><br>
 
 ## 1. 그리디 Greedy
 
