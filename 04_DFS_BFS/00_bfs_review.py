@@ -14,18 +14,34 @@ gragh = [
 
 visited = [False] * 9
 
+# 230216
 def bfs(start):
     q = deque()
     q.append(start)
     visited[start] = True
 
     while q:
-        x = q.popleft()
-        print(x, end=' ')
+        now = q.popleft()
+        print(now, end=' ')
 
-        for nx in gragh[x]:
-            if visited[nx] == False:
-                q.append(nx)
-                visited[nx] = True
+        for v in gragh[now]:
+            if visited[v] == False:
+                visited[v] = True
+                q.append(v)
+
+
+# def bfs(start):
+#     q = deque()
+#     q.append(start)
+#     visited[start] = True
+
+#     while q:
+#         x = q.popleft()
+#         print(x, end=' ')
+
+#         for nx in gragh[x]:
+#             if visited[nx] == False:
+#                 q.append(nx)
+#                 visited[nx] = True
 
 bfs(1)
